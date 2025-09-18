@@ -1,0 +1,63 @@
+.profile-card {
+    max-width: 400px;
+    margin: 30px auto;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 12px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    background-color: #fff;
+    text-align: center;
+}
+
+.profile-card h2 {
+    margin-bottom: 20px;
+}
+
+.profile-card p {
+    margin: 8px 0;
+    font-size: 16px;
+    color: #333;
+}
+
+.profile-card input {
+    width: 90%;
+    padding: 10px;
+    margin: 8px 0;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+    font-size: 14px;
+}
+
+.profile-card button {
+    margin: 10px 5px 0px 5px;
+    padding: 10px 15px;
+    border-radius: 6px;
+    border: none;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background 0.3s;
+}
+
+.profile-card button:hover {
+    opacity: 0.9;
+}
+
+.profile-card button.delete {
+    background-color: #e74c3c;
+    color: white;
+}
+
+.profile-card button.update {
+    background-color: #3498db;
+    color: white;
+}
+
+.profile-card button.password {
+    background-color: #f39c12;
+    color: white;
+}
+
+.profile-card form p {
+    margin-top: 5px;
+    font-size: 13px;
+}
