@@ -1,5 +1,5 @@
 
-from flask import Blueprint, request, jsonify
+from flask import Blueprint, request, jsonify, current_app
 from app.services.auth import create_user, get_user_by_email, verify_password
 import psycopg2
 from flask_jwt_extended import create_access_token
@@ -14,7 +14,9 @@ auth_bp = Blueprint("auth", __name__)
 def register():
     try:
         data = request.get_json()
+        current_app.logger.debug(f"Register request data: {data}")
         if not data:
+            
             return jsonify({"error": "Missing JSON data"}), 400
         try:
             req = RegisterRequest(**data)
@@ -26,6 +28,7 @@ def register():
         password = req.password
         
         user = create_user(username=username, email=email, password=password)
+        current_app.logger.error("Missing required fields")
         return jsonify({"user":user}), 201
         
     except ValueError as ve:
@@ -33,7 +36,9 @@ def register():
         return jsonify({"error": str(ve)}), 400
     except Exception as e:
         # Catch other DB errors
-        return jsonify({"error":str(e)}), 500
+        # return jsonify({"error":str(e)}), 500
+        current_app.logger.exception("Error during registration")
+        return {"error": "Internal Server Error"}, 500
     
 
 @auth_bp.route("/login", methods=["POST"])
