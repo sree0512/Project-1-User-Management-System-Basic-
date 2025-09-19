@@ -15,6 +15,14 @@ jwt = JWTManager()
 
 def create_app():
     app = Flask(__name__)
+
+    # Optional: also stream logs to console (for Render)
+    handler = logging.StreamHandler()
+    handler.setLevel(logging.DEBUG)
+    app.logger.addHandler(handler)
+
+
+    
     # load configuration
     
     app.config.from_object(Config)
