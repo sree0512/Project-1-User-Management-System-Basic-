@@ -33,7 +33,13 @@ def create_app():
     
     
     # Initialize extensions here (like CORS, JWT later)
-    CORS(app, origins=["http://localhost:5173", "http://127.0.0.1:5173"])
+    # CORS(app, origins=["http://localhost:5173", "http://127.0.0.1:5173"])
+
+     # ✅ ALLOW Netlify domain
+    CORS(app, resources={r"/*": {"origins": [
+        "https://basicuseraccessmanagement.netlify.app",
+        "http://localhost:5173"  # (for local dev)
+    ]}}, supports_credentials=True)
     # jwt = JWTManager()
     # jwt.init_app(app)  
     
