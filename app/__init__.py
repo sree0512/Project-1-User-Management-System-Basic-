@@ -1,10 +1,12 @@
 #create Flask app, load config
 import os
+import logging
 from flask import Flask
 from .config import Config
 from flask_jwt_extended import JWTManager
 from dotenv import load_dotenv
 from flask_cors import CORS
+
 
 
 load_dotenv()
@@ -15,7 +17,7 @@ jwt = JWTManager()
 
 def create_app():
     app = Flask(__name__)
-
+    app.logger.setLevel(logging.DEBUG)
     # Optional: also stream logs to console (for Render)
     handler = logging.StreamHandler()
     handler.setLevel(logging.DEBUG)
