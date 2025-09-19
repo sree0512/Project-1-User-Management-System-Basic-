@@ -6,10 +6,10 @@ from psycopg2.extras import RealDictCursor
 from dotenv import load_dotenv
 
 # Step 1: Load environment variables from .env
-load_dotenv()
+# load_dotenv()
 
 # Step 2: Get the DATABASE_URL from environment variables
-DATABASE_URL = os.getenv("DATABASE_URL")
+DATABASE_URL = os.environ.get("DATABASE_URL")
 
 # Step 3: Function to create a new connection to Postgres
 def get_connection():
